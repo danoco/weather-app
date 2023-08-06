@@ -1,8 +1,15 @@
-body {
+*,
+*:before,
+*:after {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  box-sizing: border-box;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +17,637 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.error-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.loading-icon {
+  animation: spin 1s infinite linear;
+  font-size: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.hidden {
+  display: none;
+}
+
+.rootPage {
+  display: flex;
+}
+
+.main {
+  width: 70%;
+  height: 100vh;
+  padding: 0 5%;
+}
+
+h1 {
+  margin: 30px 0;
+}
+
+h1 > span {
+  font-weight: 400;
+}
+
+.searchTrip-input {
+  width: 60%;
+  padding: 15px 0;
+  padding-left: 40px;
+  border: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' class='h-6 w-6' fill='none' viewBox='0 0 24 24' stroke='%23999' stroke-width='2'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' d='M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z' /%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: 10px;
+  background-size: 20px;
+  position: relative;
+}
+
+.searchTrip-input:focus {
+  outline: none;
+  border: 2px solid #007bff;
+  border-radius: 15px;
+}
+
+.trips-inner {
+  width: 100%;
+  position: relative;
+  margin: 25px 0;
+}
+
+.trips-inner > div {
+  width: 80%;
+  height: 350px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 15px;
+  overflow-y: auto;
+}
+
+/*scroll*/
+
+.trips-inner > div::-webkit-scrollbar {
+  width: 10px;
+}
+
+.trips-inner > div::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 5px;
+}
+
+.trips-inner > div::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+.trips-inner > div::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.trips-inner > div::-webkit-scrollbar-thumb:active {
+  background-color: #333;
+}
+
+.tripItem {
+  width: 100%;
+  height: auto;
+  background-color: aliceblue;
+  border-radius: 3%;
+}
+
+.tripItem.active {
+  border: 2px solid #007bff;
+}
+
+.tripItem > img {
+  border-top-left-radius: 3%;
+  border-top-right-radius: 3%;
+  width: 100%;
+}
+
+.tripItem > h2 {
+  font-weight: 400;
+  font-size: 22px;
+  padding: 15px;
+}
+
+.tripItem > p {
+  padding-left: 15px;
+  padding-bottom: 10px;
+  font-size: 14px;
+  opacity: 0.6;
+}
+
+.addTrip-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: 500;
+  position: absolute;
+  top: 25%;
+  right: 5%;
+}
+
+/*form*/
+
+.addTrip-form {
+  width: 500px;
+  height: 500px;
+  background-color: #ccc;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.addTrip-form-title {
+  font-weight: 500;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+}
+
+.addTrip-form-inner {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-between;
+  margin-top: 15%;
+  height: 50%;
+}
+
+.citySelect {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.citySelect:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+.date-input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-inner-btn {
+  position: absolute;
+  bottom: 5%;
+  right: 5%;
+}
+
+.form-inner-btn > button {
+  padding: 10px 15px;
+  margin-left: 15px;
+  cursor: pointer;
+  border: none;
+}
+
+.form-inner-btn > button[type='submit'] {
+  background-color: #007bff;
+  color: #ccc;
+}
+
+.inputValid {
+  border-color: red;
+}
+
+.titleValid {
+  color: red;
+}
+
+/*weather-page*/
+
+.indexPage {
+  width: 30%;
+}
+
+.weatherPage {
+  width: 30%;
+  background-color: #007bff;
+}
+
+.weatherPage-info {
+  margin-top: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 25%;
+}
+
+.weatherPage-info-day {
+  color: white;
+  font-size: 36px;
+}
+
+.weatherPage-info--inner {
+  width: 300px;
+  text-align: center;
+  position: relative;
+}
+
+.weatherPage-info--inner > img {
+  width: 80px;
+  position: absolute;
+  left: 10px;
+  bottom: 5px;
+}
+
+.weatherPage-info--inner > p {
+  color: white;
+  font-size: 48px;
+  font-weight: 500;
+}
+
+.weatherPage-info-city {
+  color: white;
+  font-size: 28px;
+}
+
+.weather-timer {
+  margin-top: 150px;
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: 22px;
+}
+
+.weather-timer > div {
+  text-align: center;
+}
+
+.weather-timer-title {
+  font-size: 12px;
+  font-weight: 200;
+}
+
+.weather-timer-data {
+  font-size: 36px;
+  font-weight: 500;
+}
+
+/*slider*/
+
+.slider-component {
+  position: absolute;
+  left: 5%;
+  top: 70%;
+  width: 40%;
+}
+
+.slider-component > h2 {
+  color: #555;
+  font-weight: 300;
+  font-size: 28px;
+  padding-bottom: 30px;
+}
+
+.slider {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slider-inner {
+  height: 150px;
+  overflow-x: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  white-space: nowrap;
+  position: relative;
+  scroll-behavior: smooth;
+}
+
+.slider-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.slide-btn {
+  position: absolute;
+}
+
+.slide-btn--left {
+  left: 0;
+  z-index: 10;
+  background-color: #007bff;
+
+  border-radius: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.slide-btn--left:hover {
+  opacity: 1;
+}
+
+.slide-btn--right {
+  right: 0;
+  z-index: 10;
+  background-color: #007bff;
+  border-radius: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.slide-btn--right:hover {
+  opacity: 1;
+}
+
+.slider-item {
+  width: 100px;
+  display: inline-block;
+  text-align: center;
+  margin: 0 25px;
+}
+
+.authPage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  height: 300px;
+  background-color: #007bff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.auth-form {
+  width: 80%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
+}
+
+.auth-form button,
+.logout button {
+  padding: 10px 35px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  font-size: 18px;
+}
+
+.logout {
+  position: absolute;
+  top: 5%;
+  right: 5%;
+  width: 250px;
+  text-align: center;
+  background-color: yellow;
+  border-radius: 10px;
+  padding: 15px 0;
+}
+
+@media screen and (min-width: 1600px) {
+  h1 {
+    font-size: 48px;
+  }
+
+  .searchTrip-input {
+    background-size: 28px;
+    padding: 20px 0;
+    padding-left: 40px;
+    font-size: 26px;
+  }
+
+  .trips-inner > div {
+    height: 500px;
+    width: 85%;
+  }
+
+  .tripItem {
+    width: 100%;
+  }
+
+  .tripItem > h2 {
+    font-size: 26px;
+  }
+
+  .tripItem > p {
+    font-size: 18px;
+  }
+
+  .addTrip-btn {
+    font-size: 36px;
+    right: 0;
+  }
+
+  .addTrip-form {
+    width: 800px;
+    height: 800px;
+  }
+
+  .addTrip-form-title {
+    font-size: 26px;
+  }
+
+  .addTrip-form label {
+    font-size: 24px;
+  }
+
+  .form-inner-btn > button {
+    font-size: 26px;
+  }
+
+  .citySelect {
+    padding: 16px;
+  }
+
+  .date-input {
+    padding: 16px;
+  }
+
+  .addTrip-form-inner > input::placeholder {
+    font-size: 16px;
+    color: black;
+  }
+
+  .weatherPage-info {
+    margin-top: 50%;
+    height: 500px;
+  }
+
+  .weatherPage-info-day {
+    font-size: 42px;
+  }
+
+  .weatherPage-info--inner > p {
+    font-size: 48px;
+    font-weight: 500;
+  }
+
+  .weatherPage-info-city {
+    font-size: 36px;
+  }
+
+  .weather-timer-data {
+    font-size: 36px;
+  }
+
+  .weather-timer-title {
+    font-size: 28px;
+  }
+
+  .slider-component {
+    top: 75%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .rootPage {
+    flex-direction: column;
+  }
+
+  .main {
+    width: 100%;
+    height: auto;
+  }
+
+  .trips-inner > div {
+    height: 350px;
+  }
+
+  .indexPage {
+    width: 100%;
+  }
+
+  .weatherPage {
+    width: 100%;
+    background-color: #007bff;
+  }
+
+  .weatherPage-info {
+    margin-top: 10%;
+  }
+
+  .weather-timer {
+    margin-top: 5%;
+  }
+
+  .slider-component {
+    position: static;
+    width: 80%;
+    margin-top: 5%;
+  }
+
+  .slider-component > h2 {
+    color: white;
+  }
+}
+@media screen and (max-width: 576px) {
+  .authPage {
+    width: 250px;
+  }
+
+  .logout {
+    top: 175px;
+    right: 10%;
+    width: 200px;
+  }
+
+  h1 {
+    font-size: 28px;
+    margin: 20px 0;
+  }
+  .main {
+    position: relative;
+  }
+
+  .trips-inner {
+    position: static;
+  }
+
+  .trips-inner > div {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: hidden;
+    overflow-x: hidden;
+  }
+
+  .addTrip-btn {
+    top: 80px;
+    right: 10%;
+    font-size: 14px;
+  }
+
+  .weatherPage-info-day {
+    font-size: 28px;
+  }
+
+  .weatherPage-info--inner {
+    width: 200px;
+  }
+
+  .weatherPage-info--inner > img {
+    width: 60px;
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+  }
+
+  .weatherPage-info--inner > p {
+    font-size: 36px;
+    font-weight: 500;
+  }
+
+  .weatherPage-info-city {
+    font-size: 22px;
+  }
+
+  .weather-timer-data {
+    font-size: 28px;
+  }
+
+  .addTrip-form {
+    width: 250px;
+    height: 350px;
+    top: 350px;
+  }
 }
