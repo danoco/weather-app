@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, NavLink } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { removeUser } from '../store/slice/userSlice';
@@ -45,9 +45,11 @@ function Root() {
   return (
     <div className='rootPage '>
       <div className='main '>
-        <h1>
-          <span>Weather</span> Forecast
-        </h1>
+        <NavLink to='/'>
+          <h1>
+            <span>Weather</span> Forecast
+          </h1>
+        </NavLink>
         <input
           className='searchTrip-input'
           placeholder='Search your trip'
