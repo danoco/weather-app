@@ -9,7 +9,7 @@ function TripItem({ tripItem }) {
       to={`trips/:${tripItem.id}`}
     >
       <img
-        src={`images/city/${tripItem.citySelect}.jpg`}
+        src={`/images/city/${tripItem.citySelect}.jpg`}
         alt={tripItem.citySelect}
       />
       <h2>{tripItem.citySelect}</h2>
